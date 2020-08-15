@@ -5,46 +5,92 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        
         <link rel="stylesheet" href="./assets/style.css" />
 
         <title>Code Quiz</title>
     </head>
 
     <body>
-        <header>
-            <a href="how to link to other element in page and this disappear">View Highscores</a>
-
-            <h2 class="right">Time: <span id="timer"></span></h2>
-        </header>
+        <nav class="navbar navbar-light bg-light">
+            <div class="align-left">
+                <a href="how to link to other element in page and this disappear" class="left" id="to-highscores">View Highscores</a>
+            </div>
+            <div class="align-right">
+                <span class="navbar-text">Time: <span id="timer"></span></span>
+            </div>
+        </nav>
 
         <div class="container display" id="start">
-            <h1>Coding Quiz Challenge</h1>
-            <h3>Try to answer...</h3>
-            <button id="start-btn">Start Quiz</button>
+            <div class="row">
+                <div class="col-md">
+                    <h1>Coding Quiz Challenge</h1>
+                    <h4>Try to answer...</h4>
+                    <button id="start-btn">Start Quiz</button>
+                </div>
+            </div>
         </div>
 
         <div class="container hide" id="question-one">
-            <h2>Question being asked:</h2>
-            <div class="answer-choices">
-                <button class="incorrect-answer-btn">1. Answer Choice</button>
-                <button class="incorrect-answer-btn">2. Answer Choice</button>
-                <button class="correct-answer-btn">3. Answer Choice</button>
-                <button class="incorrect-answer-btn">4. Answer Choice</button>
+            <div class="row">
+                <div class="col-md">
+                    <h3>Question being asked:</h3>
+                    <div class="answer-choices">
+                        <button class="incorrect-answer-btn">1. Answer Choice</button>
+                        <button class="incorrect-answer-btn">2. Answer Choice</button>
+                        <button class="correct-answer-btn">3. Answer Choice</button>
+                        <button class="incorrect-answer-btn">4. Answer Choice</button>
+                    </div>
+                    <div class="announcement"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container hide" id="question-two">
+            <div class="row">
+                <div class="col-md">
+                    <h3>Question being asked:</h3>
+                    <div class="answer-choices">
+                        <button class="incorrect-answer-btn">1. Answer Choice</button>
+                        <button class="incorrect-answer-btn">2. Answer Choice</button>
+                        <button class="correct-answer-btn">3. Answer Choice</button>
+                        <button class="incorrect-answer-btn">4. Answer Choice</button>
+                    </div>
+                </div>
             </div>
         </div>
 
         <div class="container hide" id="submit">
-            <h2>All done</h2>
-            <h3>Your final score is: <span id="final-score"></span></h3>
-            <h4>Enter initials: <input type="text" name="initials-text" id="initials text" /></h4>
+            <div class="row">
+                <div class="col-md">
+                    <h2>All done!</h2>
+                    <h4>Your final score is: <span id="final-score"></span></h4>
+                    <h5>
+                        Enter initials: 
+                        <input type="text" name="initials-text" id="initials-text" />
+                        <button id="initial-submit-btn">Submit</button>
+                    </h5>
+                </div>
+            </div>
         </div>
 
         <div class="container hide" id="highscores">
-            <button id="back-btn">Go Back</button>
-            <button id="clear-button">Clear Highscores</button>
+            <div class="row">
+                <div class="col-md">
+                    <h2>Highscores:</h2>
+                    <ul id="highscore-list"></ul>
+                    <button id="back-btn">Go Back</button>
+                    <button id="clear-button">Clear Highscores</button>
+                </div>
+            </div>
         </div>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
         <script src="./assets/script.js"></script>
     </body>
