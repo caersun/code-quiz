@@ -17,7 +17,7 @@
     <body>
         <nav class="navbar navbar-light bg-light">
             <div class="align-left">
-                <a href="how to link to other element in page and this disappear" class="left" id="to-highscores">View Highscores</a>
+                <a href ="#highscores" class="left" id="to-highscores">View Highscores</a>
             </div>
             <div class="align-right">
                 <span class="navbar-text">Time: <span id="timer"></span></span>
@@ -34,22 +34,7 @@
             </div>
         </div>
 
-        <div class="container hide" id="question-one">
-            <div class="row">
-                <div class="col-md">
-                    <h3>Question being asked:</h3>
-                    <div class="answer-choices">
-                        <button class="incorrect-answer-btn">1. Answer Choice</button>
-                        <button class="incorrect-answer-btn">2. Answer Choice</button>
-                        <button class="correct-answer-btn">3. Answer Choice</button>
-                        <button class="incorrect-answer-btn">4. Answer Choice</button>
-                    </div>git 
-                    <div class="announcement"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container hide" id="question-two">
+        <div class="container hide question" id="question-one">
             <div class="row">
                 <div class="col-md">
                     <h3>Question being asked:</h3>
@@ -59,6 +44,22 @@
                         <button class="correct-answer-btn">3. Answer Choice</button>
                         <button class="incorrect-answer-btn">4. Answer Choice</button>
                     </div>
+                    <div class="announcement"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container hide question" id="question-two">
+            <div class="row">
+                <div class="col-md">
+                    <h3>Question being asked:</h3>
+                    <div class="answer-choices">
+                        <button class="incorrect-answer-btn">1. Answer Choice</button>
+                        <button class="incorrect-answer-btn">2. Answer Choice</button>
+                        <button class="correct-answer-btn">3. Answer Choice</button>
+                        <button class="incorrect-answer-btn">4. Answer Choice</button>
+                    </div>
+                    <div class="announcement"></div>
                 </div>
             </div>
         </div>
@@ -83,7 +84,7 @@
                     <h2>Highscores:</h2>
                     <ul id="highscore-list"></ul>
                     <button id="back-btn">Go Back</button>
-                    <button id="clear-button">Clear Highscores</button>
+                    <button id="clear-btn">Clear Highscores</button>
                 </div>
             </div>
         </div>

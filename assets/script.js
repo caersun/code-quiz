@@ -1,28 +1,56 @@
-var startBtn = $("#start-btn");
-var incorrectAnswer = $(".incorrect-answer-btn");
-var correctAnswer = $(".correct-answer.btn");
-var announcement = $(".announcement");
-var initialSubmitBtn = $("#initial-submit-btn");
-var highscoreList = $("#highscore-list");
-var highscoreInput = $("#initials-text");
+var startBtn = document.querySelector("#start-btn");
+var incorrectAnswerBtn = document.querySelector(".incorrect-answer-btn");
+var correctAnswerBtn = document.querySelector(".correct-answer.btn");
+var initialSubmitBtn = document.querySelector("#initial-submit-btn");
+var backBtn = document.querySelector("#back-btn");
+var clearBtn = document.querySelector("#clear-btn");
+var toHighscores = document.querySelector("#to-highscores");
 
+var announcement = document.querySelector(".announcement");
+
+var highscoreList = document.querySelector("#highscore-list");
+var highscoreInput = document.querySelector("#initials-text");
+
+var timer = document.querySelector("#timer");
+
+var score = "";
 var highscores = [];
 
-var timer = 60;
+var secondsLeft = 60;
+var interval;
 
 init();
+startTimer();
 
-function timer() {
+function startTimer() {
+    interval = setInterval(function() {
+        secondsLeft--;
+        timer.textContent = secondsLeft;
 
+        if (secondsLeft === 0) {
+            clearInterval(interval);
+            // function (?) to grab score and go to submit page
+        }
+    }, 1000);
 }
 
-$("#to-highscores").on("click", function() {});
+toHighscores.addEventListener("click", function() {
+    document.querySelector("#start").className = "container hide";
+    document.querySelector("#question-one").className = "container question hide";
+    document.querySelector("#question-two").className = "container question hide";
+    document.querySelector("#question-submit").className = "container hide";
 
-$("#start-btn").on("click", function() {});
+    document.querySelector("#highscores").className = "container display";
+});
 
-$(".correctAnswer").on("click", function() {});
+startBtn.addEventListener("click", function() {
+    document.querySelector("#start").className = "container hide";
+    document.querySelector("#question-one").className = "container question hide";
+});
 
-$(".incorrectAnswer").on("click", function() {});
+correctAnswerBtn.addEventListener("click", function() {});
+
+incorrectAnswerBtn.addEventListener("click", function() {});
 
 
 
@@ -62,8 +90,10 @@ function storeScores() {
     localStorage.setItem("highscores", JSON.stringify(highscores));
 }
 
+function alignHighscores() {};
 
-$("#initial-submit-button").on("click", function(event) {
+
+initialSubmitBtn.addEventListener("click", function(event) {
     event.preventDefault();
 
     var highscoreText = highscoreInput.value.trim();
@@ -82,10 +112,12 @@ $("#initial-submit-button").on("click", function(event) {
     renderHighscore();
 })
 
-function goBack() {
+backBtn.addEventListener("click", function() {});
 
-}
+clearBtn.addEventListener("click", function(event) {
+    event.preventDefault();
+    localStorage.clear();
+    highscoreList.innerHTML = "";
 
-function clearHighscores() {
-
-}
+    // BUG: Cannot get to clear memory
+});
