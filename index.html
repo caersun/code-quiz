@@ -37,12 +37,12 @@
             <div class="container hide question" id="question-one">
                 <div class="row">
                     <div class="col-md">
-                        <h3>Question1 being asked:</h3>
+                        <h3>Common used data types do NOT include:</h3>
                         <div class="answer-choices" id="one">
-                            <button class="incorrect-answer-btn">1. Answer Choice</button>
-                            <button class="incorrect-answer-btn">2. Answer Choice</button>
-                            <button class="correct-answer-btn" id="correct-answer-one">3. Answer Choice</button>
-                            <button class="incorrect-answer-btn">4. Answer Choice</button>
+                            <button class="incorrect-answer-btn">1. Strings</button>
+                            <button class="incorrect-answer-btn">2. Booleans</button>
+                            <button class="correct-answer-btn" id="correct-answer-one">3. Alerts</button>
+                            <button class="incorrect-answer-btn">4. Numbers</button>
                         </div>
                     </div>
                 </div>
@@ -51,12 +51,12 @@
             <div class="container hide question" id="question-two">
                 <div class="row">
                     <div class="col-md">
-                        <h3>Question2 being asked:</h3>
+                        <h3>The condition in an if/else statement is enclosed within:</h3>
                         <div class="answer-choices" id="two">
-                            <button class="incorrect-answer-btn">1. Answer Choice</button>
-                            <button class="incorrect-answer-btn">2. Answer Choice</button>
-                            <button class="correct-answer-btn" id="correct-answer-two">3. Answer Choice</button>
-                            <button class="incorrect-answer-btn">4. Answer Choice</button>
+                            <button class="incorrect-answer-btn">1. Quotes</button>
+                            <button class="correct-answer-btn">2. Curly brackets</button>
+                            <button class="incorrect-answer-btn">3. Parantheses</button>
+                            <button class="incorrect-answer-btn">4. Square brackets</button>
                         </div>
                         <div class="announcement" id="from-one"></div>
                     </div>
@@ -66,12 +66,12 @@
             <div class="container hide question" id="question-three">
                 <div class="row">
                     <div class="col-md">
-                        <h3>Question3 being asked:</h3>
+                        <h3>Arrays in JavaScript can be used to store:</h3>
                         <div class="answer-choices" id="three">
-                            <button class="incorrect-answer-btn">1. Answer Choice</button>
-                            <button class="incorrect-answer-btn">2. Answer Choice</button>
-                            <button class="correct-answer-btn" id="correct-answer-three">3. Answer Choice</button>
-                            <button class="incorrect-answer-btn">4. Answer Choice</button>
+                            <button class="incorrect-answer-btn">1. Numbers and strings</button>
+                            <button class="incorrect-answer-btn">2. Other arrays</button>
+                            <button class="incorrect-answer-btn">3. Booleans</button>
+                            <button class="correct-answer-btn">4. All of the above</button>
                         </div>
                         <div class="announcement"></div>
                     </div>
@@ -81,12 +81,12 @@
             <div class="container hide question" id="question-four">
                 <div class="row">
                     <div class="col-md">
-                        <h3>Question4 being asked:</h3>
+                        <h3>String values must be enclosed within _____ when being assigned to variables.</h3>
                         <div class="answer-choices" id="four">
-                            <button class="incorrect-answer-btn">1. Answer Choice</button>
-                            <button class="incorrect-answer-btn">2. Answer Choice</button>
-                            <button class="correct-answer-btn" id="correct-answer-four">3. Answer Choice</button>
-                            <button class="incorrect-answer-btn">4. Answer Choice</button>
+                            <button class="incorrect-answer-btn">1. Commas</button>
+                            <button class="incorrect-answer-btn">2. Curly brackets</button>
+                            <button class="correct-answer-btn">3. Quotes</button>
+                            <button class="incorrect-answer-btn">4. Parentheses</button>
                         </div>
                         <div class="announcement"></div>
                     </div>
@@ -96,12 +96,12 @@
             <div class="container hide question" id="question-five">
                 <div class="row">
                     <div class="col-md">
-                        <h3>Question5 being asked:</h3>
+                        <h3>A very useful tool used during development and debugging for printing content to the debugger is:</h3>
                         <div class="answer-choices" id="five">
-                            <button class="incorrect-answer-btn">1. Answer Choice</button>
-                            <button class="incorrect-answer-btn">2. Answer Choice</button>
-                            <button class="correct-answer-btn" id="correct-answer-five">3. Answer Choice</button>
-                            <button class="incorrect-answer-btn">4. Answer Choice</button>
+                            <button class="incorrect-answer-btn">1. JavaScript</button>
+                            <button class="incorrect-answer-btn">2. Terminal/Bash</button>
+                            <button class="incorrect-answer-btn">3. for loops</button>
+                            <button class="correct-answer-btn">4. console.log</button>
                         </div>
                         <div class="announcement"></div>
                     </div>
@@ -155,7 +155,6 @@ var questionFive = document.querySelector("#question-five");
 var questions = [questionOne, questionTwo, questionThree, questionFour, questionFive];
 
 var incorrectAnswerBtn = document.querySelectorAll(".incorrect-answer-btn");
-console.log(incorrectAnswerBtn);
 var correctAnswerBtn = document.querySelectorAll(".correct-answer-btn");
 
 var announcement = document.querySelector(".announcement");
@@ -184,6 +183,16 @@ function startTimer() { // how to only run when secondsLeft > 0
         /*incorrectAnswerBtn.onclick = function() {
             secondsLeft -= 5;
         }; // BUGGY!! */
+
+        for (var i = 0; i < questions.length; i++) {
+            questions[i].addEventListener("click", function(event) {
+                var element = event.target;
+
+                if (element.matches('.incorrect-answer-btn') === true) {
+                    secondsLeft--; // Takes time away but about 10 seconds?
+                } 
+            });
+        }
 
         timer.textContent = secondsLeft;
 
