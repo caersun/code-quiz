@@ -40,3 +40,33 @@ input {
 #initial-submit-btn {
     display: inline;
 }
+
+@media screen and (max-width: 768px) {
+  
+    .container {
+      /* Box-model */
+      width: 100%;
+      padding: 20px;
+    }
+
+}
+
+@media screen and (max-width: 320px) {
+  
+    .container {
+      /* Box-model */
+      width: 100%;
+      padding: 20px;
+    }
+
+}
+
+@media screen and (max-width: 168px) {
+  
+    .container {
+      /* Box-model */
+      width: 100%;
+      padding: 20px;
+    }
+
+}
