@@ -5,8 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         
         <link rel="stylesheet" href="./assets/style.css" />
@@ -39,11 +37,11 @@
             <div class="container hide question" id="question-one">
                 <div class="row">
                     <div class="col-md">
-                        <h3>Question being asked:</h3>
-                        <div class="answer-choices">
+                        <h3>Question1 being asked:</h3>
+                        <div class="answer-choices" id="one">
                             <button class="incorrect-answer-btn">1. Answer Choice</button>
                             <button class="incorrect-answer-btn">2. Answer Choice</button>
-                            <button class="correct-answer-btn">3. Answer Choice</button>
+                            <button class="correct-answer-btn" id="correct-answer-one">3. Answer Choice</button>
                             <button class="incorrect-answer-btn">4. Answer Choice</button>
                         </div>
                     </div>
@@ -53,11 +51,56 @@
             <div class="container hide question" id="question-two">
                 <div class="row">
                     <div class="col-md">
-                        <h3>Question being asked:</h3>
-                        <div class="answer-choices">
+                        <h3>Question2 being asked:</h3>
+                        <div class="answer-choices" id="two">
                             <button class="incorrect-answer-btn">1. Answer Choice</button>
                             <button class="incorrect-answer-btn">2. Answer Choice</button>
-                            <button class="correct-answer-btn">3. Answer Choice</button>
+                            <button class="correct-answer-btn" id="correct-answer-two">3. Answer Choice</button>
+                            <button class="incorrect-answer-btn">4. Answer Choice</button>
+                        </div>
+                        <div class="announcement" id="from-one"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container hide question" id="question-three">
+                <div class="row">
+                    <div class="col-md">
+                        <h3>Question3 being asked:</h3>
+                        <div class="answer-choices" id="three">
+                            <button class="incorrect-answer-btn">1. Answer Choice</button>
+                            <button class="incorrect-answer-btn">2. Answer Choice</button>
+                            <button class="correct-answer-btn" id="correct-answer-three">3. Answer Choice</button>
+                            <button class="incorrect-answer-btn">4. Answer Choice</button>
+                        </div>
+                        <div class="announcement"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container hide question" id="question-four">
+                <div class="row">
+                    <div class="col-md">
+                        <h3>Question4 being asked:</h3>
+                        <div class="answer-choices" id="four">
+                            <button class="incorrect-answer-btn">1. Answer Choice</button>
+                            <button class="incorrect-answer-btn">2. Answer Choice</button>
+                            <button class="correct-answer-btn" id="correct-answer-four">3. Answer Choice</button>
+                            <button class="incorrect-answer-btn">4. Answer Choice</button>
+                        </div>
+                        <div class="announcement"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container hide question" id="question-five">
+                <div class="row">
+                    <div class="col-md">
+                        <h3>Question5 being asked:</h3>
+                        <div class="answer-choices" id="five">
+                            <button class="incorrect-answer-btn">1. Answer Choice</button>
+                            <button class="incorrect-answer-btn">2. Answer Choice</button>
+                            <button class="correct-answer-btn" id="correct-answer-five">3. Answer Choice</button>
                             <button class="incorrect-answer-btn">4. Answer Choice</button>
                         </div>
                         <div class="announcement"></div>
@@ -92,10 +135,292 @@
             </div>
         </div>
 
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
-        <script src="./assets/script.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+
+var startBtn = document.querySelector("#start-btn");
+var initialSubmitBtn = document.querySelector("#initial-submit-btn");
+var backBtn = document.querySelector("#back-btn");
+var clearBtn = document.querySelector("#clear-btn");
+var toHighscores = document.querySelector("#to-highscores");
+
+var questionsDiv = document.querySelector("#questions");
+var questionOne = document.querySelector("#question-one");
+var questionTwo = document.querySelector("#question-two");
+var questionThree = document.querySelector("#question-three");
+var questionFour = document.querySelector("#question-four");
+var questionFive = document.querySelector("#question-five");
+var questions = [questionOne, questionTwo, questionThree, questionFour, questionFive];
+
+var incorrectAnswerBtn = document.querySelectorAll(".incorrect-answer-btn");
+console.log(incorrectAnswerBtn);
+var correctAnswerBtn = document.querySelectorAll(".correct-answer-btn");
+
+var announcement = document.querySelector(".announcement");
+
+var highscoreList = document.querySelector("#highscore-list");
+var highscoreInput = document.querySelector("#initials-text");
+
+var timer = document.querySelector("#timer");
+var finalScore = document.querySelector("#final-score");
+
+var score = 0;
+var highscores = [];
+
+var secondsLeft = 60;
+var interval;
+
+init();
+
+timer.textContent = secondsLeft;
+
+
+function startTimer() { // how to only run when secondsLeft > 0
+    interval = setInterval(function() {
+        secondsLeft--; 
+
+        /*incorrectAnswerBtn.onclick = function() {
+            secondsLeft -= 5;
+        }; // BUGGY!! */
+
+        timer.textContent = secondsLeft;
+
+        if (secondsLeft === 0) { // how to constantly check this?
+            clearInterval(interval);
+
+            document.querySelector("#start").className = "container hide";
+
+            questionOne.className = "container question hide";
+            questionTwo.className = "container question hide";
+            questionThree.className = "container question hide";
+            questionFour.className = "container question hide";
+            questionFive.className = "container question hide";
+
+            document.querySelector("#submit").className = "container display";
+            // function (?) to grab score and go to submit page
+        }
+        
+    }, 1000);
+}
+
+toHighscores.addEventListener("click", function() {
+    document.querySelector("#start").className = "container hide";
+    questionOne.className = "container question hide";
+    questionTwo.className = "container question hide";
+    questionThree.className = "container question hide";
+    questionFour.className = "container question hide";
+    questionFive.className = "container question hide";
+    document.querySelector("#submit").className = "container hide";
+
+    document.querySelector("#highscores").className = "container display";
+});
+
+startBtn.addEventListener("click", function() {
+    document.querySelector("#start").className = "container hide";
+    questionOne.className = "container question display";
+
+    startTimer();
+});
+
+questionOne.addEventListener("click", function(event) {
+    var element = event.target;
+
+    if (element.matches("button") === true) {
+        questionOne.className = "container question hide";
+        questionTwo.className = "container question display";
+    }
+
+    if (element.matches('.correct-answer-btn') === true) {
+        score++;
+        alert("Correct!");
+
+    } else {
+        alert("Better luck next time!")
+    }
+
+    });
+
+questionTwo.addEventListener("click", function(event) {
+    var element = event.target;
+
+    if (element.matches("button") === true) {
+        questionTwo.className = "container question hide";
+        questionThree.className = "container question display";
+    }
+
+    if (element.matches('.correct-answer-btn') === true) {
+        score++;
+        alert("Correct!");
+
+    } else {
+        alert("Better luck next time!")
+    }
+
+    });
+
+questionThree.addEventListener("click", function(event) {
+    var element = event.target;
+
+    if (element.matches("button") === true) {
+        questionThree.className = "container question hide";
+        questionFour.className = "container question display";
+    }
+
+    if (element.matches('.correct-answer-btn') === true) {
+        score++;
+        alert("Correct!");
+
+    } else {
+        alert("Better luck next time!")
+    }
+
+    });
+
+questionFour.addEventListener("click", function(event) {
+    var element = event.target;
+
+    if (element.matches("button") === true) {
+        questionFour.className = "container question hide";
+        questionFive.className = "container question display";
+    }
+
+    if (element.matches('.correct-answer-btn') === true) {
+        score++;
+        alert("Correct!");
+
+    } else {
+        alert("Better luck next time!")
+    }
+
+    });
+
+questionFive.addEventListener("click", function(event) {
+    var element = event.target;
+
+    if (element.matches("button") === true) {
+        questionFive.className = "container question hide";
+        document.querySelector("#submit").className = "container display";
+        
+    }
+
+    if (element.matches('.correct-answer-btn') === true) {
+        score++;
+        alert("Correct!");
+
+    } else {
+        alert("Better luck next time!")
+    }
+
+    finalScore.textContent = score;
+
+    });
+
+
+
+
+function alignHighscores() {
+    highscores.sort(function(a,b) {
+        return b.score - a.score;
+    })
+};
+
+function renderHighscore() {
+    // Clear highscoreList element
+    highscoreList.innerHTML = "";
+    alignHighscores();
+
+    // for array?
+    /*for (var i = 0; i < highscores.length; i++) {
+
+        if (highscores[i] % 2 === 0) { // if it's an even number
+            var highscore = highscores[i];
+        } else {
+            var initials = highscores[i];
+        }
+    } */
+
+
+    for (var i = 0; i< highscores.length; i++) {
+        var highscore = highscores[i];
+
+        var li = document.createElement("li");
+        li.textContent = highscore;
+        li.setAttribute("data-index", i);
+
+        highscoreList.appendChild(li);
+    }
+
+}
+
+function init() {
+    // Get stored highscores from localStorage
+    // Parsing the JSON string to an object
+    var storedScores = JSON.parse(localStorage.getItem("highscores"));
+
+    // If highscores are retrieved from localStorage, update the highscores array to it
+    if (storedScores !== null) {
+        highscores = storedScores;
+    }
+
+    // Render highscores to the DOM
+    renderHighscore();
+}
+
+function storeScores() {
+    // Stringify and set "highscores" key in localStorage to highscores array
+    localStorage.setItem("highscores", JSON.stringify(highscores));
+}
+
+initialSubmitBtn.addEventListener("click", function(event) {
+    event.preventDefault();
+
+    var highscoreText = score + " " + highscoreInput.value.trim();
+    console.log(highscores);
+
+    // Return from function early if submitted highscoreText is blank
+    if (highscoreText === "") {
+        return;
+    }
+
+    // Add new highscoreText to highscores array, clear the input
+    highscores.push(highscoreText);
+    console.log(highscoreText);
+    highscoreInput.value = "";
+
+    // Store the updated highscores in localStorage, re-render list
+    storeScores();
+    renderHighscore();
+
+    // To Highscores
+    document.querySelector("#submit").className = "container hide";
+    document.querySelector("#highscores").className = "container display";
+
+})
+
+backBtn.addEventListener("click", function() {
+    document.querySelector("#highscores").className = "container hide";
+    document.querySelector("#start").className = "container display";
+
+    score = 0;
+    secondsLeft = 60;
+});
+
+clearBtn.addEventListener("click", function(event) {
+    event.preventDefault();
+    localStorage.clear();
+    highscoreList.innerHTML = "";
+
+    highscores = [];
+});
+
+});
+        </script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  
     </body>
 </html>

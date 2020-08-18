@@ -8,7 +8,10 @@ $(document).ready(function() {
     var clearBtn = document.querySelector("#clear-btn");
     var toHighscores = document.querySelector("#to-highscores");
 
-    var questionsDiv = document.querySelectorAll(".question");
+    var questionsDiv = document.querySelector("#questions");
+    var questionOne = document.querySelector("#question-one");
+    var questionTwo = document.querySelector("#question-two");
+    var questions = [questionOne, questionTwo];
 
     var announcement = document.querySelector(".announcement");
 
@@ -61,14 +64,18 @@ $(document).ready(function() {
 
         // If a button clicked within questionsDiv
         if (element.matches("button") === true) {
-            // for loop going through next .question until end?
+            for (i = 0; i > questions.length;) {
+                questions[i].className = "container question hide";
+                questions[i++].className = "container question display";
+            }
+            
         }
     });
 
     correctAnswerBtn.addEventListener("click", function() {
         score++;
 
-        console.log(this.className);
+        // console.log(this.className);
     });
 
     incorrectAnswerBtn.addEventListener("click", function() {
