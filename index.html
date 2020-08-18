@@ -51,7 +51,7 @@
             <div class="container hide question" id="question-two">
                 <div class="row">
                     <div class="col-md">
-                        <h3>The condition in an if/else statement is enclosed within:</h3>GI
+                        <h3>The condition in an if/else statement is enclosed within:</h3>
                         <div class="answer-choices" id="two">
                             <button class="incorrect-answer-btn">1. Quotes</button>
                             <button class="correct-answer-btn">2. Curly brackets</button>
@@ -175,6 +175,10 @@ init();
 
 timer.textContent = secondsLeft;
 
+function stopTimer() {
+    secondsLeft = 0;
+    clearInterval(interval);
+};
 
 function startTimer() { // how to only run when secondsLeft > 0
     interval = setInterval(function() {
@@ -196,7 +200,7 @@ function startTimer() { // how to only run when secondsLeft > 0
 
         timer.textContent = secondsLeft;
 
-        if (secondsLeft === 0) { // how to constantly check this?
+        if (secondsLeft <= 0) { // how to constantly check this?
             clearInterval(interval);
 
             document.querySelector("#start").className = "container hide";
@@ -209,10 +213,13 @@ function startTimer() { // how to only run when secondsLeft > 0
 
             document.querySelector("#submit").className = "container display";
             // function (?) to grab score and go to submit page
+
+            stopTimer();
         }
         
     }, 1000);
 }
+
 
 toHighscores.addEventListener("click", function() {
     document.querySelector("#start").className = "container hide";
@@ -224,6 +231,8 @@ toHighscores.addEventListener("click", function() {
     document.querySelector("#submit").className = "container hide";
 
     document.querySelector("#highscores").className = "container display";
+
+    stopTimer();
 });
 
 startBtn.addEventListener("click", function() {
@@ -323,6 +332,7 @@ questionFive.addEventListener("click", function(event) {
     }
 
     finalScore.textContent = score;
+    stopTimer();
 
     });
 
@@ -412,6 +422,7 @@ backBtn.addEventListener("click", function() {
     document.querySelector("#highscores").className = "container hide";
     document.querySelector("#start").className = "container display";
 
+    stopTimer();
     score = 0;
     secondsLeft = 60;
 });
